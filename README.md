@@ -1,4 +1,4 @@
-# LangChain4j Intro
+# LangChain4j Intro (solutions)
 <img src='src/main/resources/images/langchain4j_logo_text.png' alt='LangChain4j Integrations' width="200">
 
 
