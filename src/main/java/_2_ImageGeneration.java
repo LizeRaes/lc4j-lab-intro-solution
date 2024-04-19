@@ -5,6 +5,7 @@ import dev.langchain4j.model.openai.OpenAiImageModel;
 import dev.langchain4j.model.output.Response;
 
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocument;
 
@@ -41,7 +42,7 @@ public class _2_ImageGeneration {
             // -----------------------
             // Assignment:
             //      - connect to OpenAi's Dall-E ImageModel and set some more parameters
-            //      - generate your image and store it in the root (file handling code provided)
+            //      - generate your image and persist it (use builder with .persistTo( ... ) )
 
             // TODO make an overview of the options in readme
             ImageModel model = OpenAiImageModel.builder()
@@ -50,29 +51,12 @@ public class _2_ImageGeneration {
                     //.quality(DALL_E_QUALITY_HD)
                     .logRequests(true)
                     .logResponses(true)
-                    .withPersisting()
+                    .persistTo(Paths.get("src/main/resources/result-images"))
                     .build();
 
             Response<Image> response = model.generate("2 funny cats");
 
-            // TODO figure out why it's null
-            String base64Image = response.content().base64Data();
-            System.out.println(base64Image);
 
-          /*  byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-            InputStream stream = new ByteArrayInputStream(imageBytes);
-
-            OutputStream out = null;
-            try {
-                out = Files.newOutputStream(Paths.get("aiImage.png"));
-                out.write(imageBytes);
-                out.close();
-            } catch (IOException e) {
-                throw new RuntimeException("Error when writing image to disk: " + e);
-            } */
-
-            // TODO remove this method and check if always stored locally or only on .url()
-            System.out.println(response.content().url());
         }
     }
 }
