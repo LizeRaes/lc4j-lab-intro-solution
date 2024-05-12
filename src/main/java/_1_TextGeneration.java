@@ -43,7 +43,7 @@ public class _1_TextGeneration {
                 .logResponses(true)
                 .build();
 
-        String answerB = modelA.generate("Name five words that developers hate to hear most");
+        String answerB = modelB.generate("Name five words that developers hate to hear most");
         System.out.println("Answer B: " + answerB);
 
         // Parameter settings depend on the model, and can usually be found on the model provider's website
