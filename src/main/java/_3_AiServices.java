@@ -24,13 +24,6 @@ public class _3_AiServices {
 
     static class BasicAIService {
 
-        // -----------------------
-        // a. Basic AIService
-        // -----------------------
-        // Assignment:
-        //      - declare a basic AIService interface with one method chat
-        //      - create the AIService and use it to generate a message
-
         // 1. AIService interface declaration
         interface Assistant {
             String chat(String message);
@@ -48,16 +41,6 @@ public class _3_AiServices {
     }
 
     static class AIServiceWithVariablesAndMessagesAndOutputType {
-
-        // -----------------------
-        // b. Add Variables, Messages and an output type to AIServices
-        // -----------------------
-        // Assignment:
-        //      - in TextUtils AIService interface, declare methods to
-        //          - translate a String text into a String language
-        //          - summarize a String text in int n bullet points
-        //          - extract a LocalDateTime from a String text
-        //      - create your AIService and test it out
 
         // 1. AIService interface declaration
         interface TextUtils {
@@ -102,13 +85,6 @@ public class _3_AiServices {
 
     static class AIServicePOJOWithDescriptions {
 
-        // --------------------------------
-        // b. AIService that returns a POJO
-        // --------------------------------
-        // Assignment:
-        //      - decorate the fields in Recipe with @Description in a similar manner as the title. Be creative!
-        //      - use the chef AIService that is provided and have fun generating recipes
-
         // 1. POJO definition
         static class Recipe {
 
@@ -146,7 +122,7 @@ public class _3_AiServices {
 
             // 4. Use AIService
 
-            Recipe recipe = chef.createRecipeFrom("cucumber", "tomato", "feta", "onion", "olives", "lemon");
+            Recipe recipe = chef.createRecipeFrom("cucumber", "tomato", "frietsaus", "onion", "olives", "lemon");
 
             System.out.println(recipe);
         }

@@ -42,7 +42,6 @@ import static java.util.stream.Collectors.joining;
 public class _6_RAG {
 
     public static void main(String[] args) throws Exception {
-
         // -----------------------
         // a. Ingestion phase
         // -----------------------

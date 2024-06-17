@@ -20,17 +20,7 @@ import static dev.langchain4j.data.message.UserMessage.userMessage;
 
 public class _4_Memory {
 
-    // Models are stateless and don't remember the previous conversation
-    // Memory makes them stateful
     static class AIServiceWithMemory {
-
-        // ------------------------
-        // a. Out-of-the-box Memory
-        // ------------------------
-        // Assignment:
-        //      - create a ChatMemory storing a maximum of 10 messages
-        //      - add it to the AIService
-        //      - test it out (verify that it remembers what has been said before)
 
         // 1. Declare AIService
         interface Assistant {
@@ -60,21 +50,7 @@ public class _4_Memory {
         }
     }
 
-    // The ChatMemory is flexible: we can add our own SystemMessage, UserMessage or AIMessage.
-    // We usually pay per token and the context has a limit, so we have to limit the size of our memory.
-    // We can set the maximum number of tokens, or implement a version of the ChatMemory that fits our needs.
     static class ManualMemoryIntervention {
-
-        // -------------------------------------
-        // b. Fake the memory to steer the model
-        // -------------------------------------
-        // Assignment:
-        //      - create a ChatMemory storing a maximum of 1000 tokens
-        //      - add the given SystemMessage (= model instruction)
-        //      - inspect what happens in populateWithExamples, observe the difference between AiMessage and UserMessage
-        //      - add the memory to the AIService
-        //      - test it out and observe how it sticks to the format of the examples
-        //      - try to trick it into answering other things
 
         public static void main(String[] args) {
 
@@ -86,11 +62,10 @@ public class _4_Memory {
             SystemMessage systemMessage = SystemMessage.from(
                     "You are a customer assistant for a phone manufacturer. " +
                             "You turn feedback into tickets for the internal engineering team, and send a friendly reply to the customer. " +
-                            "If the topic is not about the phone's hardware or software, you politely refuse to answer");
+                            "If the topic is not about the phone's performance or software, you politely refuse to answer");
             chatMemory.add(systemMessage);
 
-            // Add some examples of fictive UserMessages and AIMessages to force the model to answer in our format.
-            // This is called the few-shot method
+           // Add some few-shot examples
             populateWithExamples(chatMemory);
 
             // 3. Create model
